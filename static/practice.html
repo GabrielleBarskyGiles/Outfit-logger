@@ -1,0 +1,48 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF80;}
+.button2 {background-color: #008CBA;}
+</style>
+</head>
+<body>
+
+<button id="demo" class="button button1" onclick="myfunction(this)">Green</button>
+<button class="button button2" onclick="myfunction(this)">Blue</button>
+
+<script>
+ async  function myfunction(element) {
+document.getElementById("demo").style.color = "red";
+    if (element.id=="demo"){
+      data = {"Button":1}
+    }
+    else{
+      data = {"Button":2}
+    }
+    console.log(data)
+    const result = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)})
+    const jsonData = await result.json();
+    console.log(jsonData);
+}
+</script>
+
+</body>
+</html> 
