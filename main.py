@@ -38,14 +38,16 @@ async def read_root(item: Item):
   #cur.execute("CREATE TABLE test(button1, button2)")
   if item.Button==1:
      cur = con.cursor()
-     cur.execute("INSERT INTO test VALUES ('button1',1)")
+     cur.execute("INSERT INTO test VALUES (1,0)")
      con.commit()
      return{"Hello": "World"}
   elif item.Button==2:
      cur = con.cursor()
-     cur.execute("INSERT INTO test VALUES ('button2',1)")
+     cur.execute("INSERT INTO test VALUES (0,1)")
      con.commit()
-     return{"Hello": "WOrls"}
+     res = cur.execute("SELECT COUNT(button2) FROM test")
+     count = res.fetchall()
+     return{"You have pressed button2": count }
   else:
      return{"faied":"sad"}
 
