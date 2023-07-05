@@ -46,7 +46,7 @@ async def read_root(item: Item):
      cur.execute("INSERT INTO test VALUES (0,1)")
      con.commit()
      res = cur.execute("SELECT COUNT(button2) FROM test WHERE button2=1")
-     count = res.fetchall()
+     count = res.fetchone()
      return{"You have pressed button2": count }
   else:
      return{"faied":"sad"}
