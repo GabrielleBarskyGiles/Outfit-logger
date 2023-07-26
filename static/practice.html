@@ -22,7 +22,8 @@
 
 <button id="demo" class="button button1" onclick="myfunction(this)">Green</button>
 <button class="button button2" onclick="myfunction(this)">Blue</button>
-
+<p id="word">
+</p>
 <script>
  async  function myfunction(element) {
 document.getElementById("demo").style.color = "red";
@@ -41,6 +42,7 @@ document.getElementById("demo").style.color = "red";
       body: JSON.stringify(data)})
     const jsonData = await result.json();
     console.log(jsonData);
+    document.getElementById("word").textContent = jsonData.button2[0]
 }
 </script>
 

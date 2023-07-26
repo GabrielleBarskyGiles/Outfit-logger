@@ -47,7 +47,7 @@ async def read_root(item: Item):
      con.commit()
      res = cur.execute("SELECT COUNT(button2) FROM test WHERE button2=1")
      count = res.fetchone()
-     return{"You have pressed button2": count }
+     return{"button2": count }
   else:
      return{"faied":"sad"}
 
