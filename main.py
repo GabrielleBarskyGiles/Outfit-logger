@@ -40,16 +40,15 @@ async def read_root(item: Item):
      cur = con.cursor()
      cur.execute("INSERT INTO test VALUES (1,0)")
      con.commit()
+     res = cur.execute("SELECT COUNT(button1) FROM test WHERE button1=1")
+     count = res.fetchone()
+     return{"button1": count}
   elif item.Button==2:
      cur = con.cursor()
      cur.execute("INSERT INTO test VALUES (0,1)")
      con.commit()
+     res = cur.execute("SELECT COUNT(button2) FROM test WHERE button2=1")
+     count = res.fetchone()
+     return{"button2": count}
   else:
      return{"faied":"sad"}
-  res = cur.execute("SELECT COUNT(button1) FROM test WHERE button1=1")
-  count = res.fetchone()
-  return{"button1": count}
-  res = cur.execute("SELECT COUNT(button2) FROM test WHERE button2=1")
-  count2 = res.fetchone()
-  return{"button2": count2 }
-
