@@ -22,11 +22,39 @@
 
 <button id="demo" class="button button1" onclick="myfunction(this)">Green</button>
 <button class="button button2" onclick="myfunction(this)">Blue</button>
-<p id="word">
-</p>
+<p id="word1">Button 1 was pressed:</p>
+<p id="word2">Button 2 was pressed:</p>
+
+
+<label for="pants">Choose a pant:</label>
+<input list="bottom-pants" id="pants-choice" name="pants-choice">
+
+<datalist id="bottom-pants">
+    <option value="Blue jeans">
+    <option value="Black jeans">
+    <option value="Grey jeans">
+    <option value="Brown wool pants">
+    <option value="Pinstripe wool pants">
+</datalist>
+
+<form>
+  <p>
+    <input type="checkbox" id="taste_1" name="taste_cherry" value="cherry" />
+    <label for="taste_1">I like cherry</label>
+  </p>
+  <p>
+    <input type="checkbox" id="taste_2" name="taste_banana" value="banana" />
+    <label for="taste_2">I like banana</label>
+  </p>
+  <p>
+    <button type="submit">Validate the payment</button>
+  </p>
+</form>
+
+
 <script>
  async  function myfunction(element) {
-document.getElementById("demo").style.color = "red";
+ document.getElementById("demo").style.color = "red";
     if (element.id=="demo"){
       data = {"Button":1}
     }
@@ -42,8 +70,10 @@ document.getElementById("demo").style.color = "red";
       body: JSON.stringify(data)})
     const jsonData = await result.json();
     console.log(jsonData);
-    document.getElementById("word").textContent = jsonData.button2[0]
+    document.getElementById("word1").textContent += jsonData["button1"]
+    document.getElementById("word2").textContent += jsonData["button2"]
 }
+
 </script>
 
 </body>
