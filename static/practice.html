@@ -22,9 +22,10 @@
 
 <button id="demo" class="button button1" onclick="myfunction(this)">Green</button>
 <button class="button button2" onclick="myfunction(this)">Blue</button>
-<p id="word1">Button 1 was pressed:</p>
-<p id="word2">Button 2 was pressed:</p>
-
+<p id="b1p">Button 1 was pressed: </p>
+<p id="word1"> </p>
+<p id="b2p">Button 2 was pressed:</p>
+<p id="word2">  </p>
 
 <label for="pants">Choose a pant:</label>
 <input list="bottom-pants" id="pants-choice" name="pants-choice">
@@ -54,7 +55,7 @@
 
 <script>
  async  function myfunction(element) {
- document.getElementById("demo").style.color = "red";
+document.getElementById("demo").style.color = "red";
     if (element.id=="demo"){
       data = {"Button":1}
     }
@@ -70,10 +71,9 @@
       body: JSON.stringify(data)})
     const jsonData = await result.json();
     console.log(jsonData);
-    document.getElementById("word1").textContent += jsonData["button1"]
-    document.getElementById("word2").textContent += jsonData["button2"]
+    document.getElementById("word2").textContent = jsonData["button2"]
+    document.getElementById("word1").textContent = jsonData["button1"]
 }
-
 </script>
 
 </body>
