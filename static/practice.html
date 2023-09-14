@@ -38,6 +38,8 @@
     <option value="Pinstripe wool pants">
 </datalist>
 
+<button id="demo2" onclick="validate()">Submit</button>
+
 <form>
   <p>
     <input type="checkbox" id="taste_1" name="taste_cherry" value="cherry" />
@@ -74,7 +76,15 @@ document.getElementById("demo").style.color = "red";
     document.getElementById("word2").textContent = jsonData["button2"]
     document.getElementById("word1").textContent = jsonData["button1"]
 }
+function validate(){
+    console.log(document.getElementById('pants-choice').value); //WORKS
+
+//    console.log(document.getElementById('screens.screenid').text);
+//    console.log(document.getElementById('screens.screenid').innerHTML);
+//    console.log(document.getElementById('screens.screenid').option);
+
+}
 </script>
 
 </body>
-</html> 
+</html>

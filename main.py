@@ -1,21 +1,14 @@
 import sqlite3
-
 from typing import Union
-
 from fastapi import FastAPI, Response
-
 from fastapi.middleware.cors import CORSMiddleware
-
 from fastapi.staticfiles import StaticFiles
-
 from pydantic import BaseModel
 
 app = FastAPI()
 
-
 class Item(BaseModel):
     Button : int
-
 
 origins = [
 	"http://localhost:8000",
