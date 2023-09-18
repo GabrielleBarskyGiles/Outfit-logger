@@ -27,6 +27,10 @@
 <p id="b2p">Button 2 was pressed:</p>
 <p id="word2">  </p>
 
+<label for="start">Date:</label>
+
+<input type="date" id="start" name="trip-start" value="2023-09-18" min="2018-01-01" max="2025-12-31" />
+
 <label for="pants">Choose a pant:</label>
 <input list="bottom-pants" id="pants-choice" name="pants-choice">
 
@@ -78,8 +82,9 @@ document.getElementById("demo").style.color = "red";
 }
  async function validate(){
     console.log(document.getElementById('pants-choice').value); //WORKS
+    console.log(document.getElementById('start').value);
     data = {"Button":1}
-    console.log(data)
+    console.log(data);
     const result = await fetch("/", {
       method: "POST",
       headers: {
