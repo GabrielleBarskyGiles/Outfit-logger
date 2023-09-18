@@ -76,9 +76,19 @@ document.getElementById("demo").style.color = "red";
     document.getElementById("word2").textContent = jsonData["button2"]
     document.getElementById("word1").textContent = jsonData["button1"]
 }
-function validate(){
+ async function validate(){
     console.log(document.getElementById('pants-choice').value); //WORKS
-
+    data = {"Button":1}
+    console.log(data)
+    const result = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)})
+    const jsonData = await result.json();
+    console.log(jsonData);
+    document.getElementById("word1").textContent = jsonData["button1"]
 //    console.log(document.getElementById('screens.screenid').text);
 //    console.log(document.getElementById('screens.screenid').innerHTML);
 //    console.log(document.getElementById('screens.screenid').option);
