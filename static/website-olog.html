@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF80;}
+.button2 {background-color: #008CBA;}
+</style>
+</head>
+<body>
+
+<button id="demo" class="button button1" onclick="myfunction(this)">Green</button>
+<button class="button button2" onclick="myfunction(this)">Blue</button>
+<p id="b1p">Button 1 was pressed: </p>
+<p id="word1"> </p>
+<p id="b2p">Button 2 was pressed:</p>
+<p id="word2">  </p>
+
+<label for="start">Date:</label>
+
+<input type="date" id="start" name="trip-start" value="2023-09-18" min="2018-01-01" max="2025-12-31" />
+
+<label for="pants">Choose a pant:</label>
+<input list="bottom-pants" id="pants-choice" name="pants-choice">
+
+<datalist id="bottom-pants">
+    <option value="Blue jeans">
+    <option value="Black jeans">
+    <option value="Grey jeans">
+    <option value="Brown wool pants">
+    <option value="Pinstripe wool pants">
+</datalist>
+
+<label for="skirt">Choose a skirt:</label>
+<input list="bottom-skirt" id="pants-choice" name="pants-choice">
+
+<datalist id="bottom-skirt">
+    <option value="Black long skirt">
+    <option value="Red mini skirt">
+    <option value="Brown mini skirt">
+    <option value="Black floral skirt">
+    <option value="Purple mini skirt">    
+</datalist>
+
+<label for="shirt">Choose a shirt:</label>
+<input list="top-shirt" id="shirt-choice" name="shirt-choice">
+
+<datalist id="top-shirt">
+    <option value="Black button up">
+    <option value="Gree button up">
+    <option value="Berry button up">
+    <option value="Red satin button up">
+    <option value="Purple silk button up">
+    <option value"Pink satin button up">
+    <option value"Black t-shirt">
+    <option value"Green t-shirt">
+    <option value"White t-shirt">
+    <option value"Black graphic babytee">
+    <option value"Black waffel top">
+    <option value"Black eyelet top">
+    <option value"Brown knit tanktop">   
+</datalist>
+
+
+<label for="sweater">Choose a sweater:</label>
+<input list="top-sweater" id="sweater-choice" name="sweater-choice">
+
+<datalist id="top-sweater">
+    <option value="Berry cable knit sweater">
+    <option value="Mauve sweater">
+    <option value="Burnt orange sweater">
+    <option value="Brown cardigan">   
+</datalist>
+
+<button id="demo2" onclick="validate()">Submit</button>
+
+<form>
+  <p>
+    <input type="checkbox" id="taste_1" name="taste_cherry" value="cherry" />
+    <label for="taste_1">I like cherry</label>
+  </p>
+  <p>
+    <input type="checkbox" id="taste_2" name="taste_banana" value="banana" />
+    <label for="taste_2">I like banana</label>
+  </p>
+  <p>
+    <button type="submit">Validate the payment</button>
+  </p>
+</form>
+
+
+<script>
+ async  function myfunction(element) {
+document.getElementById("demo").style.color = "red";
+    if (element.id=="demo"){
+      data = {"Button":1}
+    }
+    else{
+      data = {"Button":2}
+    }
+    console.log(data)
+    const result = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)})
+    const jsonData = await result.json();
+    console.log(jsonData);
+    document.getElementById("word2").textContent = jsonData["button2"]
+    document.getElementById("word1").textContent = jsonData["button1"]
+}
+ async function validate(){
+    console.log(document.getElementById('pants-choice').value); //WORKS
+    console.log(document.getElementById('start').value);
+    data = {"Button":1}
+    console.log(data);
+    const result = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)})
+    const jsonData = await result.json();
+    console.log(jsonData);
+    document.getElementById("word1").textContent = jsonData["button1"]
+}
+</script>
+
+</body>
+</html>
